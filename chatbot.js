@@ -28,7 +28,7 @@ window.addEventListener('load', function() {
     initializeObjects();
 })
 
-function intializeObjects() {
+function initializeObjects() {
     if (localStorage.getItem("token") == null) {
         document.getElementById("chatboxFooter").style.display = "none";
         document.getElementById("chatboxBefore").style.display = "none";
