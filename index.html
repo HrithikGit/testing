@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="chatbot.js"></script>
+</head>
+
+<body>
+    <div class="chatbox-container">
+        <div onclick="updateVisibility()" id="chatIcon" class="chat-icon display">
+            <img src="https://mindlerimages.imgix.net/chatbot/Chatbot-Icon.svg" class="ionicon">
+            <!-- <svg xmlns='http://www.w3.org/2000/svg' class='ionicon' viewBox='0 0 512 512'>
+            <title>Chatbox Ellipses</title>
+            <path d='M408 64H104a56.16 56.16 0 00-56 56v192a56.16 56.16 0 0056 56h40v80l93.72-78.14a8 8 0 015.13-1.86H408a56.16 56.16 0 0056-56V120a56.16 56.16 0 00-56-56z' fill='none' stroke='currentColor' stroke-linejoin='round' stroke-width='32' />
+            <circle cx='160' cy='216' r='32' />
+            <circle cx='256' cy='216' r='32' />
+            <circle cx='352' cy='216' r='32' />
+          </svg> -->
+        </div>
+        <div id="chatBox" class="chatbox__box">
+            <div class="chatbox__header">
+                <div class=" d-flex flex-ai-center">
+                    <img class="chatbox__logo" src="https://mindlerimages.imgix.net/chatbot/logo.png">
+                    <p class="color-white mr-2">Chat with us</p>
+                    <div class="chatbox__online-text">
+                        <div class="greencircle"></div> <span>Online</span>
+                    </div>
+                    <!-- <div style="display: inline-block;">
+                  Chat with us
+                  <div class="chatbox__header-sub-heading">
+                    <div class="greencircle"></div> Online
+                  </div>
+                </div> -->
+                </div>
+                <div>
+                    <a href="javascript:void(0)">
+                        <img src="https://mindlerimages.imgix.net/chatbot/white-close-icon.svg"
+                            onclick="updateVisibility();">
+                    </a>
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x chatbox__header-closeIcon" >
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg> -->
+                </div>
+            </div>
+            <div class="chatbox__body" id="chatboxBody">
+                <div id="chatboxBodyInner">
+                    <div id="chatMessages" class="chatbox__chat">
+                        <form id="loginForm" class="h100">
+                            <div class="d-flex-col flex-jc-between h100">
+                                <div>
+                                    <div>
+                                        <h3 class="login__title">Please provide some basic details</h3>
+                                    </div>
+                                    <input class="form__input" id="userName" type="text" placeholder="Enter your Name"
+                                        onkeydown="removeErrors('userName')">
+                                    <div id="userNameError" class="error-text"></div>
+                                    <input class="form__input" id="userPhone" type="tel"
+                                        placeholder="Enter your Phone number" onkeydown="removeErrors('userPhone')">
+                                    <div id="userPhoneError" class="error-text"></div>
+                                    <input class="form__input" id="userEmail" type="email"
+                                        placeholder="Enter your Email" onkeydown="removeErrors('userEmail')">
+                                    <div id="userEmailError" class="error-text"></div>
+                                    <p id="errorMessage" class="error-text"></p>
+                                </div>
+                                <button type="button" id="login" class="login-button" onclick="loginUser()">Start Chat
+                                </button>
+                            </div>
+                        </form>
+                        <div id="chatboxBefore" class="chatbox__before">
+
+                        </div>
+                        <div id="chatMessagesBox">
+                        </div>
+                    </div>
+                    <div class="chatbox__footer" id="chatboxFooter">
+                        <div class="chatbox__userMessage-container">
+                            <div id="userInputMessage" class="chatbox__userMessage">
+                                <input id="chatMessage" placeholder="Enter a message" onkeydown="messageEntered()"
+                                    type="text">
+                                <div class="chatbox__sendIcon d-flex flex-jc-around flex-ai-center">
+                                    <img src="https://mindlerimages.imgix.net/chatbot/ri-send-plane-fill.svg"
+                                        onclick="addUserMessage(document.getElementById('chatMessage').value,'fromInput')">
+                                </div>
+                            </div>
+                            <div class="chat__menu-icon">
+                                <a href="javascript:void(0)" onclick="showChatMenu()">
+                                    <img src="https://mindlerimages.imgix.net/chatbot/ri-menu-line.svg">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send chatbox__sendIcon" onclick="addUserMessage(document.getElementById('chatMessage').value,'fromInput')">
+                      <line x1="22" y1="2" x2="11" y2="13"></line>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg> -->
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chatbox__menu-container">
+                    <div class="chatbox__menu" id="chatboxMenu">
+                        <div class="d-flex mb-2">
+                            <button onclick="returnToMainMenu()" class="btn mr-2">Return to the Main Menu</button>
+                            <button onclick="restartChat()" class="btn">Restart the chat </button>
+                        </div>
+                        <div onclick="hideChatMenu()" style="text-align: center;">
+                            <button class="btn btn-close"> Close </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
