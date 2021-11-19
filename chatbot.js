@@ -23,16 +23,27 @@ const urlForText = url + "send-message-input";
 
 var buttonsToRemove = [];
 
-if (localStorage.getItem("token") == null) {
-  document.getElementById("chatboxFooter").style.display = "none";
-  document.getElementById("chatboxBefore").style.display = "none";
-}
-else {
-  document.getElementById("loginForm").style.display = "none";
-  makeFirstRequest();
+
+window.addEventListener('load', function() {
+    initializeObjects();
+})
+
+function intializeObjects() {
+    if (localStorage.getItem("token") == null) {
+        document.getElementById("chatboxFooter").style.display = "none";
+        document.getElementById("chatboxBefore").style.display = "none";
+    }
+    else {
+        document.getElementById("loginForm").style.display = "none";
+        makeFirstRequest();
+    }
+    input = document.getElementById("chatMessage");
+    conversationContainer = document.getElementById("chatMessages");
+    conversationBox = document.getElementById("chatMessagesBox");
+    calculateChatbotHeight();
 }
 
-calculateChatbotHeight();
+
 
 
 // Execute a function when the user releases a key on the keyboard
